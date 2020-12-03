@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import StaleElementReferenceException
 
 driver = Chrome()
-SCROLL_PAUSE_TIME = 0.5
+SCROLL_PAUSE_TIME = 1
 
 def openNetflix():
     driver.get('https://www.netflix.com/fr-en/login')
