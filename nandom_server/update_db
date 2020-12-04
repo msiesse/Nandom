@@ -1,0 +1,20 @@
+networksetup -setwebproxystate wi-fi on
+networksetup -setwebproxystate Ethernet on
+networksetup -setsecurewebproxystate wi-fi on
+networksetup -setsecurewebproxystate Ethernet on
+
+cp ../credentials credentials
+
+mitmdump -s ../getdb.py & echo $! > mitmdump.pid
+python ../scrap.py && python ../sort_database.py
+kill `cat mitmdump.pid`
+rm mitmdump.pid
+rm film_database
+rm credentials
+networksetup -setwebproxystate wi-fi off
+networksetup -setwebproxystate Ethernet off
+networksetup -setsecurewebproxystate wi-fi off
+networksetup -setsecurewebproxystate Ethernet off
+
+gsutil rm -rf "gs://staging.nandom.appspot.com/*"
+yes | gcloud app deploy
