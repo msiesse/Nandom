@@ -1,15 +1,11 @@
-let changeColor = document.getElementById('changeColor');
+let randomNetflix = document.getElementById("randomNetflix");
 
-chrome.storage.sync.get('color', function(data) {
-  changeColor.style.backgroundColor = data.color;
-  changeColor.setAttribute('value', data.color);
-});
-
-changeColor.onclick = function(element) {
-    let color = element.target.value;
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-      chrome.tabs.executeScript(
-          tabs[0].id,
-          {code: 'document.body.style.backgroundColor = "' + color + '";'});
+randomNetflix.onclick = function(element) {
+    fetch('https://nandom.ew.r.appspot.com').then(r => r.text()).then(result => {
+        document.write(result);
     });
-  };
+};
+
+/*chrome.webRequest.onBeforeRequest.addListener(() => {
+
+})*/
