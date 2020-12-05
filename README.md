@@ -41,6 +41,7 @@ Now you can launch manually python scripts.
 > python scrap.py (to launch the web scrapper)
 > python sort_database.py (to get unique IDs movies)
 > python select_random.py (to open a random movie on Chrome)
+```
 
 ### Setup for Users
 
