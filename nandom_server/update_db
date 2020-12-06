@@ -1,3 +1,5 @@
+export PATH=/Users/msiesse/google-cloud-sdk/bin:/Users/msiesse/.pyenv/shims:/usr/local/opt/bison/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Library/Apple/usr/bin
+
 networksetup -setwebproxystate wi-fi on
 networksetup -setwebproxystate Ethernet on
 networksetup -setsecurewebproxystate wi-fi on
@@ -6,7 +8,7 @@ networksetup -setsecurewebproxystate Ethernet on
 cp ../credentials credentials
 
 mitmdump -s ../getdb.py & echo $! > mitmdump.pid
-python ../scrap.py && python ../sort_database.py
+/Users/msiesse/.pyenv/shims/python ../scrap.py && /Users/msiesse/.pyenv/shims/python ../sort_database.py
 kill `cat mitmdump.pid`
 rm mitmdump.pid
 rm film_database
